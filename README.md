@@ -10,6 +10,14 @@ Tugas Data Maining/
 ├─ requirements.txt      # Daftar paket Python yang dibutuhkan
 └─ README.md             # <‑‑ INI ADALAH README
 ```
+## Dokumentasi
+
+Berikut ini dokumentasi proyek mencakup:
+
+- Latar belakang
+- Tujuan pembuatan Data Mining
+- Tahapan pembangunan Data Mining (Data Preparation, Modelling, Evaluation, Deployment)
+- Screenshot hasil masing‑masing tahapan
 
 ## 🛠️ Prasyarat
 - **Windows 10/11**
