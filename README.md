@@ -84,3 +84,43 @@ Kemudian dapat meng‑install kembali dengan `pip install -r requirements.txt`.
 Eksplorasi nilai‑nilai berbeda, lihat bagaimana skor churn berubah, atau kembangkan proyek (misalnya coba classifier lain, tambahkan fitur, atau pakai data nyata).
 
 *Selamat coding!*
+
+## Latar Belakang
+
+Data mining merupakan proses menemukan pola, anomali, dan informasi berguna dari kumpulan data yang besar. Pada proyek ini, kami menerapkan teknik data mining untuk memprediksi churn (perpindahan) pelanggan layanan telekomunikasi, sehingga perusahaan dapat mengambil langkah proaktif untuk mempertahankan pelanggan.
+
+## Tujuan Pembuatan Data Mining
+
+- Membangun model prediksi churn yang akurat menggunakan data sintetis.
+- Menyediakan dashboard interaktif yang dapat digunakan oleh tim bisnis untuk menguji skenario pelanggan.
+- Memperlihatkan alur lengkap dari persiapan data hingga deployment.
+
+## Tahapan Pembangunan Data Mining
+
+### 1. Data Preparation
+
+Tahap pertama melibatkan pembuatan data sintetis, pembersihan, dan transformasi fitur. Data disimpan dalam format CSV dan ditampilkan pada tabel serta visualisasi distribusi churn.
+
+![Data Preparation Screenshot](file:///c:/Users/abdul/.gemini/antigravity-ide/brain/fdc336e0-6bf6-491b-a346-2c18b2263712/data_preparation_screenshot_1781362746415.png)
+
+### 2. Modelling
+
+Model Decision Tree dilatih menggunakan Scikit‑Learn dengan parameter `max_depth=4`. Model dan scaler disimpan sebagai file `.pkl`.
+
+![Model Training Screenshot](file:///c:/Users/abdul/.gemini/antigravity-ide/brain/fdc336e0-6bf6-491b-a346-2c18b2263712/model_training_screenshot_1781362765540.png)
+
+### 3. Evaluation
+
+Setelah pelatihan, model dievaluasi menggunakan metrik akurasi, precision, recall, dan confusion matrix pada data test. Hasil evaluasi ditampilkan pada console dan dapat dilihat pada dashboard.
+
+### 4. Deployment
+
+Dashboard dibangun dengan Streamlit. Pengguna dapat memasukkan atribut pelanggan dan memperoleh prediksi churn secara real‑time.
+
+```powershell
+streamlit run app.py
+```
+
+Setelah perintah dijalankan, buka browser pada `http://localhost:8501` untuk berinteraksi dengan aplikasi.
+
+---

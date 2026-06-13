@@ -43,6 +43,9 @@ data = {
 df = pd.DataFrame(data)
 
 # Menambahkan sedikit missing values buatan untuk demonstrasi cleansing
+
+# Simpan data sintetis ke CSV untuk visualisasi interaktif
+df.to_csv('customer_data.csv', index=False)
 df.loc[df.sample(frac=0.02).index, 'MonthlyCharges'] = np.nan
 print(f"Jumlah missing values sebelum cleansing:\n{df.isnull().sum()}\n")
 

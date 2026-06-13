@@ -1,5 +1,13 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
+import os
+
+# Load synthetic data for interactive visualization (if available)
+if os.path.exists('customer_data.csv'):
+    data_vis_df = pd.read_csv('customer_data.csv')
+else:
+    data_vis_df = None
 import joblib
 
 # Setup Halaman
@@ -21,6 +29,31 @@ predict_btn = st.sidebar.button("🔍 PREDIKSI SEKARANG")
 
 # Main Area
 st.subheader("📊 HASIL ANALISIS & PREDIKSI")
+
+# Sidebar option to show visualizations
+show_vis = st.sidebar.checkbox("🔎 Tampilkan Visualisasi Data", value=False)
+
+# Main area: display visualizations if requested
+if show_vis:
+    if data_vis_df is not None:
+        # Churn distribution
+        churn_counts = data_vis_df['Churn'].value_counts().reset_index()
+        churn_counts.columns = ['Churn', 'Count']
+        fig_churn = px.bar(churn_counts, x='Churn', y='Count', color='Churn',
+                           title='Distribusi Churn')
+        st.plotly_chart(fig_churn, use_container_width=True)
+
+        # MonthlyCharges histogram
+        fig_hist = px.histogram(data_vis_df, x='MonthlyCharges', nbins=30,
+                               title='Distribusi Monthly Charges')
+        st.plotly_chart(fig_hist, use_container_width=True)
+
+        # Scatter Tenure vs MonthlyCharges colored by Churn
+        fig_scatter = px.scatter(data_vis_df, x='Tenure', y='MonthlyCharges',
+                                 color='Churn', title='Tenure vs Monthly Charges')
+        st.plotly_chart(fig_scatter, use_container_width=True)
+    else:
+        st.info("Data visualisasi belum tersedia. Jalankan `tugas_datamining.py` untuk menghasilkan CSV.")
 
 if predict_btn:
     try:
